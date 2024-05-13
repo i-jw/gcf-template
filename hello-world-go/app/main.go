@@ -2,9 +2,8 @@
 package hello
 
 import (
-	"encoding/json"
 	"fmt"
-	"html"
+	"io"
 	"net/http"
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
@@ -16,16 +15,14 @@ func init() {
 
 // HelloHTTP is an HTTP Cloud Function with a request parameter.
 func entryPoint(w http.ResponseWriter, r *http.Request) {
-	var d struct {
-		Name string `json:"name"`
+	resp, err := http.Get("http://ipinfo.io")
+	if err != nil {
+		fmt.Fprint(w, "outgoing ip request get err")
 	}
-	if err := json.NewDecoder(r.Body).Decode(&d); err != nil {
-		fmt.Fprint(w, "Hello, World!")
+	defer resp.Body.Close()
+	body, b_err := io.ReadAll(resp.Body)
+	if b_err == nil {
+		fmt.Fprint(w, string(body))
 		return
 	}
-	if d.Name == "" {
-		fmt.Fprint(w, "Hello, World!")
-		return
-	}
-	fmt.Fprintf(w, "Hello, %s!", html.EscapeString(d.Name))
 }
