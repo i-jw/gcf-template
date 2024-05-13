@@ -6,7 +6,7 @@ gcloud auth application-default login
 或者
 GOOGLE_CREDENTIALS=service-account-key-xxxx.json
 ```
-### 部署，注意替换环境变量中的项目ID和域名
+### 部署，注意替换本地变量中的项目ID和区域
 ```shell
 cd hello-world-go/
 terraform init
