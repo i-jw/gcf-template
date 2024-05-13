@@ -1,18 +1,18 @@
-[中文版](README_zh.md)
-## How to Deploy
-### GCP Credentials setup
+[English Version](README.md)
+## 如何部署
+### 设置GCP认证
 ```shell
 gcloud auth application-default login
 或者
 GOOGLE_CREDENTIALS=service-account-key-xxxx.json
 ```
-### Deploy the resource, replace the variables with your's
+### 部署，注意替换环境变量中的项目ID和域名
 ```shell
 cd hello-world-go/
 terraform init
 terraform apply -var="project_id=PROJECT_ID" -var="region=REGION"  -var="trigger_bucket=BUCKET_NAME" -var="subfix=xxx"  --auto-approve
 ```
-### Delete all resource
+### 销毁资源
 ```shell
 terraform destroy -var="project_id=PROJECT_ID" -var="region=REGION"  -var="trigger_bucket=BUCKET_NAME" -var="subfix=xxx" --auto-approve
 ```
