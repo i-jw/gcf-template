@@ -10,9 +10,9 @@ GOOGLE_CREDENTIALS=service-account-key-xxxx.json
 ```shell
 cd hello-world-go/
 terraform init
-terraform apply -var="project_id=PROJECT_ID" -var="region=REGION"  -var="trigger_bucket=BUCKET_NAME" -var="subfix=xxx"  --auto-approve
+terraform apply  --auto-approve
 ```
 ### Delete all resource
 ```shell
-terraform destroy -var="project_id=PROJECT_ID" -var="region=REGION"  -var="trigger_bucket=BUCKET_NAME" -var="subfix=xxx" --auto-approve
+terraform destroy --auto-approve
 ```
