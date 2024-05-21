@@ -23,7 +23,7 @@ terraform {
 }
 locals {
   region     = "us-central1"
-  project_id = "alpha0809"
+  project_id = ""
 }
 provider "google" {
   region  = local.region
